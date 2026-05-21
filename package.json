@@ -1,0 +1,26 @@
+{
+  "name": "game",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "build:wasm": "emcc src/wasm/brain_engine.cpp -O2 -s WASM=1 -s MODULARIZE=1 -s EXPORT_NAME=BrainEngineModule -s EXPORTED_RUNTIME_METHODS=[ccall,cwrap] -s ALLOW_MEMORY_GROWTH=1 --bind -o public/wasm/brain_engine.js"
+  },
+  "devDependencies": {
+    "typescript": "~6.0.2",
+    "vite": "^8.0.12"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.106.1",
+    "@vitejs/plugin-react": "^6.0.2",
+    "framer-motion": "^12.39.0",
+    "html2canvas": "^1.4.1",
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6",
+    "react-router-dom": "^7.15.1",
+    "recharts": "^3.8.1"
+  }
+}
