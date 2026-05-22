@@ -10,7 +10,7 @@ import {
   resetRateLimit,
   sendPasswordReset,
 } from '../lib/auth'
-import loginBg from '../assets/Login-bg.png'
+import loginBg from '../assets/login-bg.png'
 import './Login.css'
 
 // ─── UTILS ───────────────────────────────────────────────────────────────────
