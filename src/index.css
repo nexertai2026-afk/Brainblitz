@@ -4344,3 +4344,167 @@ button {
   }
 }
 
+/* ============================================================
+   MOBILE RESPONSIVE FIXES
+   ============================================================ */
+
+@media (max-width: 768px) {
+
+  /* --- FIX 1: NAVBAR --- */
+  .nav-float {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto;
+    padding: 10px 14px;
+    gap: 8px;
+    margin: 8px 10px 0;
+    top: 8px;
+  }
+
+  .nav-logo {
+    grid-column: 1;
+    grid-row: 1;
+    font-size: 1rem;
+  }
+
+  .nav-meta {
+    grid-column: 2;
+    grid-row: 1;
+    gap: 6px;
+    font-size: 0.72rem;
+  }
+
+  /* Username aur XP hide karo mobile par */
+  .nav-meta .nav-meta-item,
+  .nav-meta .nav-meta-divider {
+    display: none;
+  }
+
+  /* Sirf Logout/Login button dikhao */
+  .nav-meta .nav-auth-btn {
+    display: flex;
+  }
+
+  .nav-links {
+    display: flex !important;
+    grid-column: 1 / -1;
+    grid-row: 2;
+    justify-content: center;
+    gap: 2px;
+  }
+
+  .nav-link {
+    padding: 5px 12px;
+    font-size: 0.75rem;
+  }
+
+  /* --- FIX 2: GAME STATS BAR --- */
+  .game-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+
+  .game-stats {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+    width: 100%;
+    flex-wrap: unset;
+  }
+
+  .stat-box {
+    padding: 8px 6px;
+    text-align: center;
+  }
+
+  .stat-box .label {
+    font-size: 0.58rem;
+    letter-spacing: 0.5px;
+  }
+
+  .stat-box .value {
+    font-size: 1.1rem;
+  }
+
+  /* --- FIX 3: END SCREEN BUTTONS --- */
+  .result-actions {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    margin-top: 8px;
+  }
+
+  .result-actions .btn-primary,
+  .result-actions .btn-secondary {
+    width: 100%;
+    max-width: 260px;
+    padding: 12px 20px;
+    font-size: 0.9rem;
+    text-align: center;
+  }
+
+  /* --- FIX 4: HERO SECTION --- */
+  .hero {
+    padding: 40px 16px 32px;
+  }
+
+  .hero h1 {
+    font-size: clamp(2rem, 9vw, 3rem);
+    letter-spacing: -1px;
+  }
+
+  .hero-stats-row {
+    gap: 12px;
+    padding: 10px 16px;
+    width: 100%;
+  }
+
+  .hero-stat-val {
+    font-size: 0.88rem;
+  }
+
+  .hero-stat-lbl {
+    font-size: 0.58rem;
+  }
+
+  .btn-cta {
+    width: 100%;
+    max-width: 280px;
+    padding: 12px 24px;
+    font-size: 0.92rem;
+  }
+
+  /* --- FIX 5: GAME AREA --- */
+  .game-page {
+    padding: 16px 12px 40px;
+  }
+
+  .game-area {
+    padding: 20px 14px;
+    min-height: 300px;
+  }
+
+  /* --- FIX 6: MODULES SECTION --- */
+  .modules-section {
+    padding: 16px 12px 48px;
+  }
+}
+
+/* Extra small screens */
+@media (max-width: 400px) {
+  .game-stats {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  .stat-box .value {
+    font-size: 1rem;
+  }
+
+  .nav-link {
+    padding: 5px 8px;
+    font-size: 0.7rem;
+  }
+}
