@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from 'react'
 import { supabase } from '../lib/supabase'
 import { getProfile } from '../lib/auth'
+import { sendWelcomeEmail } from '../lib/emails'
 
 export function useAuth() {
   const [user, setUser] = useState(null)
@@ -13,47 +14,50 @@ export function useAuth() {
     setProfile(p)
   }, [])
 
-  // Auto-create profile for OAuth users who don't have one yet
-  const ensureOAuthProfile = useCallback(async (user) => {
-    if (!user) return
+  const ensureProfile = useCallback(async (u) => {
+    if (!u) return
+    try {
+      const { profile: existing } = await getProfile(u.id)
+      if (existing) {
+        setProfile(existing)
+        return
+      }
 
-    const { profile: existing } = await getProfile(user.id)
-    if (existing) {
-      setProfile(existing)
-      return
-    }
+      // Profile nahi mila — OAuth user ke liye auto-create karo
+      const fullName = u.user_metadata?.full_name || u.user_metadata?.name || ''
+      const emailPrefix = u.email?.split('@')[0] || 'Player'
+      const username = fullName.trim() || emailPrefix
 
-    // Build username from metadata or email
-    const fullName = user.user_metadata?.full_name || ''
-    const emailPrefix = user.email?.split('@')[0] || 'user'
-    const username = fullName.trim() || emailPrefix
+      const { error } = await supabase.from('profiles').insert({
+        id: u.id,
+        username,
+        email: u.email,
+        brain_age: 25,
+        level: 1,
+        streak: 0,
+        last_played: null,
+        avatar: '🧠',
+        age_group: null,
+        goal: null,
+      })
 
-    const { error } = await supabase.from('profiles').insert({
-      id: user.id,
-      username,
-      email: user.email,
-      brain_age: 25,
-      level: 1,
-      streak: 0,
-      last_played: null,
-      avatar: '🧠',
-      age_group: null,
-      goal: null,
-    })
-
-    if (error) {
-      console.error('OAuth profile create error:', error)
-    } else {
-      await fetchProfile(user.id)
+      if (error) {
+        console.error('Profile create error:', error)
+      } else {
+        await fetchProfile(u.id)
+      }
+    } catch (err) {
+      console.error('ensureProfile error:', err)
     }
   }, [fetchProfile])
 
   useEffect(() => {
+    // Initial session — OAuth redirect bhi yahan handle hota hai
     supabase.auth.getSession().then(({ data: { session } }) => {
       const u = session?.user ?? null
       setUser(u)
-      if (u) fetchProfile(u.id)
-      setLoading(false)
+      if (u) ensureProfile(u)
+      else setLoading(false)
     })
 
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
@@ -62,9 +66,9 @@ export function useAuth() {
         setUser(u)
 
         if (u) {
-          if (event === 'SIGNED_IN') {
-            // Could be OAuth redirect — ensure profile exists
-            await ensureOAuthProfile(u)
+          if (event === 'SIGNED_IN' || event === 'TOKEN_REFRESHED') {
+            // OAuth + normal login dono handle hote hain
+            await ensureProfile(u)
           } else {
             await fetchProfile(u.id)
           }
@@ -77,7 +81,7 @@ export function useAuth() {
     )
 
     return () => subscription.unsubscribe()
-  }, [fetchProfile, ensureOAuthProfile])
+  }, [fetchProfile, ensureProfile])
 
   const handleSignIn = async (email, password) => {
     const { data, error } = await supabase.auth.signInWithPassword({ email, password })
@@ -103,6 +107,9 @@ export function useAuth() {
         goal: null,
       })
       if (profileError) console.error('Profile insert error:', profileError)
+
+      // Welcome email bhejo ✅
+      await sendWelcomeEmail(email, username)
     }
     return { data, error: null }
   }

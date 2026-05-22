@@ -140,19 +140,23 @@ button {
   position: relative;
   background: #000000;
 }
-
 .hero h1 {
-  font-size: 4.2rem;
-  font-weight: 800;
-  line-height: 1.05;
+  font-size: 5.5rem;
+  font-weight: 900;
+  line-height: 1.0;
   margin-bottom: 16px;
-  letter-spacing: -2px;
-  background: linear-gradient(180deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.5) 100%);
+  letter-spacing: -3px;
+  background: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    rgba(255, 255, 255, 0.75) 50%,
+    rgba(255, 255, 255, 0.35) 100%
+  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  filter: drop-shadow(0 2px 40px rgba(255, 255, 255, 0.08));
 }
-
 .hero-sub {
   font-size: 0.95rem;
   color: rgba(255,255,255,0.35);
@@ -4507,4 +4511,1093 @@ button {
     padding: 5px 8px;
     font-size: 0.7rem;
   }
+}
+
+/* ============================================================
+   PRODUCTION MOBILE RESPONSIVE — BrainBlitz
+   Add this entire block at the very bottom of src/index.css
+   ============================================================ */
+
+
+/* ============================================================
+   TABLET  ≤ 1024px
+   ============================================================ */
+@media (max-width: 1024px) {
+
+  /* Navbar */
+  .nav-float {
+    margin: 10px 16px 0;
+    padding: 10px 20px;
+  }
+
+  /* Modules grid → 2 columns */
+  .modules-grid,
+  .coming-soon-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Hero */
+  .hero h1 {
+    font-size: clamp(2.8rem, 6vw, 4rem);
+  }
+
+  /* Dashboard hero → 2 col still fine, nothing to change */
+
+  /* Scores insights */
+  .scores-insights {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  /* Game level select (AE / NR) */
+  .ae-levels {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+
+/* ============================================================
+   MOBILE LARGE  ≤ 768px
+   ============================================================ */
+@media (max-width: 768px) {
+
+  /* ----------------------------------------------------------
+     1. NAVBAR — 2-row floating layout
+  ---------------------------------------------------------- */
+  .nav-float {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto;
+    padding: 10px 14px;
+    gap: 6px 10px;
+    margin: 8px 10px 0;
+    top: 8px;
+    border-radius: 12px;
+  }
+
+  .nav-logo {
+    grid-column: 1;
+    grid-row: 1;
+    font-size: 0.95rem;
+    align-self: center;
+  }
+
+  /* Auth button — right side of row 1 */
+  .nav-meta {
+    grid-column: 2;
+    grid-row: 1;
+    gap: 6px;
+    align-self: center;
+  }
+
+  /* Hide username / XP / dividers — show only the auth button */
+  .nav-meta .nav-meta-item,
+  .nav-meta .nav-meta-divider {
+    display: none;
+  }
+
+  .nav-meta .nav-auth-btn {
+    display: inline-flex;
+    padding: 5px 12px;
+    font-size: 0.72rem;
+    min-height: 30px;
+  }
+
+  /* Nav links row 2 — centred */
+  .nav-links {
+    display: flex !important;
+    grid-column: 1 / -1;
+    grid-row: 2;
+    justify-content: center;
+    gap: 2px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .nav-link {
+    padding: 5px 11px;
+    font-size: 0.75rem;
+    min-height: 32px;
+    display: flex;
+    align-items: center;
+  }
+
+
+  /* ----------------------------------------------------------
+     2. HERO SECTION
+  ---------------------------------------------------------- */
+  .hero {
+    padding: 36px 16px 28px;
+  }
+
+  .hero h1 {
+    font-size: clamp(2rem, 9vw, 3rem);
+    letter-spacing: -1px;
+    margin-bottom: 12px;
+  }
+
+  .hero-sub {
+    font-size: 0.88rem;
+    margin-bottom: 20px;
+    max-width: 100%;
+  }
+
+  .hero-stats-row {
+    gap: 10px;
+    padding: 10px 14px;
+    width: 100%;
+    flex-wrap: wrap;
+  }
+
+  .hero-stat-val { font-size: 0.85rem; }
+  .hero-stat-lbl { font-size: 0.55rem; }
+
+  .hero-stat-divider { height: 20px; }
+
+  .btn-cta {
+    width: 100%;
+    max-width: 300px;
+    padding: 13px 24px;
+    font-size: 0.92rem;
+  }
+
+
+  /* ----------------------------------------------------------
+     3. MODULES / GAME CARDS GRID
+  ---------------------------------------------------------- */
+  .modules-section {
+    padding: 16px 12px 48px;
+  }
+
+  .modules-grid,
+  .coming-soon-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .module-card {
+    padding: 18px 16px;
+    gap: 12px;
+  }
+
+
+  /* ----------------------------------------------------------
+     4. GAME PAGES — general
+  ---------------------------------------------------------- */
+  .game-page {
+    padding: 14px 12px 40px;
+    max-width: 100%;
+  }
+
+  .game-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+
+  .back-btn {
+    padding: 8px 14px;
+    font-size: 0.82rem;
+    min-height: 38px;
+  }
+
+  /* 4-stat bar in ONE row, no wrapping */
+  .game-stats {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 6px;
+    width: 100%;
+    flex-wrap: unset !important;
+  }
+
+  .stat-box {
+    padding: 7px 4px;
+    text-align: center;
+  }
+
+  .stat-box .label {
+    font-size: 0.56rem;
+    letter-spacing: 0.4px;
+  }
+
+  .stat-box .value {
+    font-size: 1.05rem;
+  }
+
+  .game-area {
+    padding: 18px 14px;
+    min-height: 280px;
+  }
+
+  .game-title { font-size: 1.4rem; }
+  .game-subtitle { font-size: 0.85rem; margin-bottom: 18px; }
+
+
+  /* ----------------------------------------------------------
+     5. MEMORY GAME
+  ---------------------------------------------------------- */
+  .memory-grid {
+    max-width: min(480px, 92vw);
+    gap: 8px;
+  }
+
+  .memory-card {
+    font-size: 1.4rem;
+    border-radius: 10px;
+  }
+
+  /* Neural Recall grid */
+  .nr-grid {
+    max-width: min(520px, 92vw);
+    gap: 6px;
+  }
+
+
+  /* ----------------------------------------------------------
+     6. MATH SPRINT
+  ---------------------------------------------------------- */
+  .math-problem {
+    font-size: clamp(2rem, 8vw, 3.2rem);
+  }
+
+  .math-options {
+    max-width: 100%;
+    gap: 10px;
+  }
+
+  .math-option {
+    padding: 14px;
+    font-size: 1.15rem;
+    min-height: 52px;
+  }
+
+  /* AE (Arithmetic Engine) */
+  .ae-question {
+    font-size: clamp(2.2rem, 8vw, 3.4rem);
+  }
+
+  .ae-levels {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .ae-lv-btn {
+    padding: 16px 12px;
+  }
+
+  .ae-numpad {
+    max-width: 300px;
+    gap: 10px;
+  }
+
+  .ae-key {
+    padding: 16px 10px;
+    font-size: 1.4rem;
+    min-height: 56px;
+  }
+
+  .ae-display {
+    font-size: 2rem;
+    max-width: 280px;
+    min-height: 72px;
+    margin-bottom: 18px;
+  }
+
+
+  /* ----------------------------------------------------------
+     7. REACTION GAME
+  ---------------------------------------------------------- */
+  .reaction-zone {
+    width: max(200px, 60vw);
+    height: max(200px, 60vw);
+  }
+
+  .reaction-tap-zone {
+    width: max(200px, 60vw);
+    height: max(200px, 60vw);
+  }
+
+  .reaction-time {
+    font-size: 2.4rem;
+  }
+
+  .reaction-time-display {
+    font-size: 1.8rem;
+  }
+
+
+  /* ----------------------------------------------------------
+     8. PATTERN GAME
+  ---------------------------------------------------------- */
+  .pattern-display {
+    grid-template-columns: repeat(3, min(70px, 18vw));
+    gap: 8px;
+  }
+
+  .pattern-cell {
+    width: min(70px, 18vw);
+    height: min(70px, 18vw);
+    border-radius: 10px;
+  }
+
+
+  /* ----------------------------------------------------------
+     9. STROOP GAME
+  ---------------------------------------------------------- */
+  .stroop-word {
+    font-size: clamp(2rem, 10vw, 3.5rem);
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+  }
+
+  .stroop-options {
+    grid-template-columns: 1fr 1fr;
+    max-width: 100%;
+    gap: 10px;
+  }
+
+  .stroop-btn {
+    padding: 14px 10px;
+    font-size: 0.88rem;
+    min-height: 52px;
+  }
+
+
+  /* ----------------------------------------------------------
+     10. N-BACK GAME
+  ---------------------------------------------------------- */
+  .nback-grid {
+    grid-template-columns: repeat(3, min(72px, 20vw));
+    gap: 8px;
+  }
+
+  .nback-cell {
+    width: min(72px, 20vw);
+    height: min(72px, 20vw);
+    border-radius: 12px;
+  }
+
+  .nback-match-btn {
+    width: 100%;
+    max-width: 300px;
+    padding: 14px 24px;
+    font-size: 1rem;
+    min-height: 52px;
+  }
+
+
+  /* ----------------------------------------------------------
+     11. WORD SCRAMBLE
+  ---------------------------------------------------------- */
+  .word-scramble {
+    font-size: clamp(1.5rem, 7vw, 2.2rem);
+    letter-spacing: 4px;
+    margin-bottom: 18px;
+  }
+
+  .word-input {
+    width: 100%;
+    max-width: 100%;
+    font-size: 1.1rem;
+    padding: 14px 16px;
+    letter-spacing: 3px;
+  }
+
+  /* Word scramble assessment letters */
+  .word-scramble-display {
+    gap: 5px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .scramble-letter {
+    width: 38px;
+    height: 46px;
+    font-size: 1.2rem;
+    border-radius: 10px;
+  }
+
+  .word-input-form {
+    max-width: 100%;
+  }
+
+  .word-assess-input {
+    font-size: 1rem;
+    padding: 12px 14px;
+  }
+
+
+  /* ----------------------------------------------------------
+     12. DASHBOARD (Profile)
+  ---------------------------------------------------------- */
+  .dashboard-hero {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    margin-bottom: 18px;
+  }
+
+  .brain-age-number { font-size: 2.8rem; }
+  .brain-level-number { font-size: 2.2rem; }
+
+  .brain-age-card,
+  .brain-level-card {
+    padding: 20px 18px;
+  }
+
+  .dashboard-section {
+    padding: 20px 16px;
+    margin-bottom: 14px;
+  }
+
+  .radar-container svg {
+    width: 200px !important;
+    height: 200px !important;
+  }
+
+  .profile-bar-label { width: 60px; font-size: 0.75rem; }
+  .profile-bar-value { width: 26px; font-size: 0.8rem; }
+  .trend-badge { width: 40px; font-size: 0.68rem; }
+
+  .achievements-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .achievement-card {
+    padding: 14px 10px;
+  }
+
+  .achievement-icon { font-size: 1.6rem; }
+  .achievement-name { font-size: 0.75rem; }
+  .achievement-desc { font-size: 0.65rem; }
+
+  /* Session list — truncate overflow */
+  .session-list {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .session-item {
+    font-size: 0.78rem;
+    padding: 8px 12px;
+    gap: 8px;
+  }
+
+  .session-game {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+
+  /* ----------------------------------------------------------
+     13. SCORES PAGE
+  ---------------------------------------------------------- */
+  .scores-page {
+    padding: 20px 12px 48px;
+  }
+
+  .scores-hero-card {
+    padding: 32px 20px 28px;
+  }
+
+  .scores-hero-number {
+    font-size: 3.2rem;
+    letter-spacing: -1px;
+  }
+
+  .scores-trophy { font-size: 2.2rem; }
+
+  .scores-insights {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+
+  .scores-insight-tile {
+    padding: 14px 8px;
+  }
+
+  .insight-value { font-size: 1rem; }
+  .insight-label { font-size: 0.6rem; }
+
+  .scores-tile {
+    padding: 10px 12px;
+    gap: 10px;
+  }
+
+  .scores-tile-name {
+    font-size: 0.82rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    min-width: 0;
+  }
+
+  .scores-xp-value { font-size: 0.95rem; }
+  .scores-xp-label { font-size: 0.58rem; }
+
+
+  /* ----------------------------------------------------------
+     14. LOGIN PAGE
+  ---------------------------------------------------------- */
+  .login-page {
+    padding: 0;
+    align-items: flex-start;
+  }
+
+  .login-card {
+    max-width: 100%;
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
+    padding: 48px 24px 40px;
+    min-height: 100vh;
+    background: #000000;
+  }
+
+  /* Signup card */
+  .signup-card {
+    border-radius: 16px;
+    padding: 28px 20px;
+  }
+
+
+  /* ----------------------------------------------------------
+     15. RESULT SCREENS
+  ---------------------------------------------------------- */
+  .result-screen {
+    gap: 12px;
+  }
+
+  .result-emoji { font-size: 3rem; }
+
+  .result-score {
+    font-size: 2.4rem;
+  }
+
+  .result-actions {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    margin-top: 8px;
+  }
+
+  .result-actions .btn-primary,
+  .result-actions .btn-secondary {
+    width: 100%;
+    max-width: 260px;
+    padding: 13px 20px;
+    font-size: 0.9rem;
+    text-align: center;
+    min-height: 48px;
+  }
+
+
+  /* ----------------------------------------------------------
+     16. ASSESSMENT FLOW
+  ---------------------------------------------------------- */
+  .assessment-step-container {
+    padding: 16px 14px 32px;
+  }
+
+  .step-title { font-size: 1.35rem; }
+
+  .memory-flash-grid {
+    gap: 10px;
+    max-width: 260px;
+  }
+
+  .memory-flash-icon {
+    width: 66px;
+    height: 66px;
+    font-size: 1.8rem;
+    border-radius: 14px;
+  }
+
+  .memory-recall-grid {
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 100%;
+  }
+
+  .memory-recall-cell { border-radius: 12px; font-size: 1.5rem; }
+
+  .math-assess-problem {
+    font-size: clamp(1.8rem, 8vw, 2.4rem);
+  }
+
+  .math-assess-options {
+    max-width: 100%;
+  }
+
+  .math-assess-option {
+    padding: 15px;
+    font-size: 1.15rem;
+    min-height: 52px;
+  }
+
+  .reaction-tap-zone {
+    width: min(260px, 68vw);
+    height: min(260px, 68vw);
+  }
+
+  .pattern-seq-item { width: 46px; height: 46px; }
+  .pattern-options { max-width: 100%; }
+
+  /* Brain results */
+  .brain-reveal-age { font-size: 4.5rem; }
+  .brain-card { padding: 22px 18px 18px; }
+  .brain-card-age-number { font-size: 3.6rem; }
+
+  .brain-card-actions {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .btn-share {
+    width: 100%;
+    max-width: 280px;
+    text-align: center;
+  }
+
+
+  /* ----------------------------------------------------------
+     17. GLOBAL INPUTS — prevent iOS zoom
+  ---------------------------------------------------------- */
+  input,
+  textarea,
+  select,
+  .word-input,
+  .word-assess-input,
+  .login-input,
+  .signup-input,
+  .coming-soon-email-input {
+    font-size: 16px !important;
+  }
+
+
+  /* ----------------------------------------------------------
+     18. MISC FIXES
+  ---------------------------------------------------------- */
+
+  /* Timer bar */
+  .timer-bar-container { margin-bottom: 18px; }
+
+  /* Coming soon section */
+  .coming-soon-section { padding: 16px 12px 48px; }
+  .coming-soon-title { font-size: 1.15rem; }
+
+  /* Footer */
+  .footer { padding: 20px 16px; font-size: 0.78rem; }
+
+  /* Brain results page */
+  .brain-results-page { padding: 24px 14px 60px; }
+
+  /* Leaderboard */
+  .leaderboard-item { padding: 12px 14px; gap: 10px; }
+  .leaderboard-rank { font-size: 1.1rem; width: 32px; }
+  .leaderboard-game { font-size: 0.85rem; }
+  .leaderboard-score { font-size: 0.9rem; }
+
+  /* Reset zone */
+  .reset-confirm-actions { flex-direction: column; }
+  .reset-confirm-btn,
+  .reset-cancel-btn { width: 100%; min-height: 48px; }
+}
+
+
+/* ============================================================
+   MOBILE  ≤ 480px
+   ============================================================ */
+@media (max-width: 480px) {
+
+  /* Navbar links tighter */
+  .nav-link {
+    padding: 5px 9px;
+    font-size: 0.72rem;
+  }
+
+  /* Hero */
+  .hero h1 {
+    font-size: clamp(1.9rem, 10vw, 2.6rem);
+  }
+
+  .hero-stats-row {
+    gap: 8px;
+    padding: 8px 10px;
+  }
+
+  .hero-stat-divider { display: none; }  /* clean up crowded row */
+
+  /* Scores insights — still 3 col but smaller */
+  .scores-insights { gap: 6px; }
+  .insight-value { font-size: 0.88rem; }
+
+  /* Modules */
+  .modules-section { padding: 12px 10px 40px; }
+  .module-card { padding: 16px 14px; }
+  .module-title { font-size: 0.95rem; }
+  .module-desc { font-size: 0.75rem; }
+
+  /* Game stats bar: keep 4-col but allow 2-col fallback if text clips */
+  .game-stats {
+    grid-template-columns: repeat(4, 1fr) !important;
+  }
+
+  .stat-box .label { font-size: 0.52rem; }
+  .stat-box .value { font-size: 0.95rem; }
+
+  /* Game area */
+  .game-area { padding: 16px 12px; }
+
+  /* Math sprint */
+  .math-problem { font-size: clamp(1.8rem, 9vw, 2.6rem); }
+  .ae-question { font-size: clamp(2rem, 9vw, 3rem); }
+
+  .ae-numpad { gap: 8px; }
+  .ae-key {
+    padding: 14px 8px;
+    font-size: 1.25rem;
+    min-height: 52px;
+  }
+
+  .ae-levels {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  /* Reaction */
+  .reaction-zone,
+  .reaction-tap-zone {
+    width: min(220px, 70vw);
+    height: min(220px, 70vw);
+  }
+
+  /* Pattern */
+  .pattern-display {
+    grid-template-columns: repeat(3, min(60px, 17vw));
+    gap: 7px;
+  }
+  .pattern-cell {
+    width: min(60px, 17vw);
+    height: min(60px, 17vw);
+  }
+
+  /* Stroop */
+  .stroop-word { font-size: clamp(1.8rem, 10vw, 2.8rem); }
+  .stroop-btn { font-size: 0.82rem; min-height: 48px; }
+
+  /* N-Back */
+  .nback-grid {
+    grid-template-columns: repeat(3, min(64px, 19vw));
+    gap: 7px;
+  }
+  .nback-cell {
+    width: min(64px, 19vw);
+    height: min(64px, 19vw);
+  }
+
+  /* Word scramble */
+  .word-scramble { font-size: clamp(1.3rem, 7vw, 1.8rem); letter-spacing: 3px; }
+  .scramble-letter { width: 34px; height: 42px; font-size: 1.1rem; }
+
+  /* NR grid */
+  .nr-grid { gap: 5px; }
+  .nr-card-front, .nr-card-back { border-radius: 8px; }
+  .nr-emoji { font-size: 1.1rem; }
+
+  /* Brain age */
+  .brain-reveal-age { font-size: 3.8rem; letter-spacing: -3px; }
+
+  /* Results */
+  .result-score { font-size: 2rem; }
+  .result-emoji { font-size: 2.5rem; }
+
+  /* Assessment */
+  .assess-ready-card { padding: 32px 20px; }
+
+  /* Dashboard radar */
+  .radar-container svg {
+    width: 170px !important;
+    height: 170px !important;
+  }
+
+  /* AE results */
+  .ae-results { padding: 22px 14px !important; }
+  .ae-quick { grid-template-columns: 1fr; gap: 8px; }
+  .ae-bk-row { grid-template-columns: 90px 1fr 40px; gap: 8px; }
+
+  /* Scores hero */
+  .scores-hero-number { font-size: 2.8rem; }
+  .scores-hero-card { padding: 24px 16px 22px; }
+}
+
+
+/* ============================================================
+   MOBILE SMALL  ≤ 380px  (iPhone SE, Galaxy S8, small Android)
+   ============================================================ */
+@media (max-width: 380px) {
+
+  /* Navbar: tightest */
+  .nav-float {
+    margin: 6px 8px 0;
+    padding: 8px 10px;
+    border-radius: 10px;
+  }
+
+  .nav-logo { font-size: 0.88rem; }
+
+  .nav-link {
+    padding: 4px 7px;
+    font-size: 0.68rem;
+  }
+
+  .nav-auth-btn {
+    padding: 4px 9px !important;
+    font-size: 0.68rem !important;
+  }
+
+  /* Hero */
+  .hero { padding: 28px 12px 24px; }
+  .hero h1 { font-size: clamp(1.7rem, 11vw, 2.2rem); }
+  .hero-sub { font-size: 0.82rem; }
+
+  /* Stats row → 2-col grid on tiny screens */
+  .hero-stats-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    padding: 10px 12px;
+  }
+
+  .hero-stat-divider { display: none; }
+
+  /* Game stats: drop to 2-col */
+  .game-stats {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  .stat-box .value { font-size: 0.95rem; }
+  .stat-box .label { font-size: 0.5rem; }
+
+  /* Modules */
+  .module-card { padding: 14px 12px; gap: 10px; }
+  .module-title { font-size: 0.9rem; }
+
+  /* Game area */
+  .game-area { padding: 14px 10px; }
+  .game-title { font-size: 1.2rem; }
+
+  /* Math */
+  .math-problem { font-size: clamp(1.6rem, 11vw, 2.2rem); }
+  .ae-question { font-size: clamp(1.8rem, 11vw, 2.6rem); }
+
+  .ae-levels {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .ae-key {
+    padding: 12px 6px;
+    font-size: 1.15rem;
+  }
+
+  /* Reaction */
+  .reaction-zone,
+  .reaction-tap-zone {
+    width: min(190px, 76vw);
+    height: min(190px, 76vw);
+  }
+
+  /* Pattern */
+  .pattern-display {
+    grid-template-columns: repeat(3, min(54px, 19vw));
+    gap: 6px;
+  }
+  .pattern-cell {
+    width: min(54px, 19vw);
+    height: min(54px, 19vw);
+    border-radius: 8px;
+  }
+
+  /* Stroop */
+  .stroop-word { font-size: clamp(1.6rem, 12vw, 2.4rem); }
+  .stroop-options { gap: 8px; }
+  .stroop-btn { padding: 12px 8px; font-size: 0.78rem; }
+
+  /* N-Back */
+  .nback-grid {
+    grid-template-columns: repeat(3, min(56px, 21vw));
+    gap: 6px;
+  }
+  .nback-cell {
+    width: min(56px, 21vw);
+    height: min(56px, 21vw);
+  }
+
+  /* Word scramble */
+  .word-scramble { font-size: clamp(1.1rem, 8vw, 1.5rem); letter-spacing: 2px; }
+  .scramble-letter { width: 30px; height: 38px; font-size: 1rem; }
+
+  /* NR */
+  .nr-lv-btn { min-width: 50px; padding: 7px; }
+  .nr-emoji { font-size: 1rem; }
+
+  /* Result */
+  .result-score { font-size: 1.8rem; }
+  .result-emoji { font-size: 2.2rem; }
+
+  .result-actions .btn-primary,
+  .result-actions .btn-secondary {
+    max-width: 220px;
+    font-size: 0.85rem;
+    padding: 12px 16px;
+  }
+
+  /* Dashboard */
+  .brain-age-number { font-size: 2.4rem; }
+  .achievements-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+
+  /* Scores */
+  .scores-hero-number { font-size: 2.4rem; }
+  .scores-insights { grid-template-columns: 1fr 1fr 1fr; gap: 5px; }
+  .scores-insight-tile { padding: 10px 6px; }
+  .insight-value { font-size: 0.82rem; }
+
+  /* Login */
+  .login-card { padding: 40px 16px 32px; }
+
+  /* Assessment */
+  .assess-ready-card { padding: 26px 16px; }
+  .brain-reveal-age { font-size: 3.2rem; }
+  .brain-card-age-number { font-size: 2.8rem; }
+}
+
+
+/* ============================================================
+   iOS SAFARI SPECIFIC FIXES
+   ============================================================ */
+@supports (-webkit-touch-callout: none) {
+
+  /* Fix sticky navbar in Safari */
+  .nav-float {
+    position: -webkit-sticky;
+    position: sticky;
+  }
+
+  /* Smooth momentum scroll */
+  .session-list,
+  .scores-tile-list,
+  .leaderboard {
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Prevent bounce on game area */
+  .game-area {
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Fix input font size (prevent auto-zoom) */
+  input,
+  textarea,
+  select {
+    font-size: 16px !important;
+  }
+
+  /* Fix 100vh on iOS (navbar + bottom bar eats space) */
+  .login-page {
+    min-height: -webkit-fill-available;
+  }
+
+  .game-page {
+    min-height: -webkit-fill-available;
+  }
+
+  /* Disable callout on game elements (no magnifier on long press) */
+  .memory-card,
+  .pattern-cell,
+  .nback-cell,
+  .stroop-btn,
+  .math-option,
+  .math-assess-option,
+  .ae-key,
+  .ae-cmp-btn,
+  .reaction-zone,
+  .reaction-tap-zone,
+  .nback-match-btn {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+
+  /* Remove tap highlight on interactive elements */
+  button,
+  a,
+  .module-card,
+  .memory-card,
+  .pattern-cell {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Fix backdrop-filter on iOS */
+  .nav-float,
+  .assessment-transition,
+  .nr-lvlup-overlay {
+    -webkit-backdrop-filter: blur(20px) saturate(1.4);
+  }
+}
+
+
+/* ============================================================
+   UNIVERSAL SAFETY RULES
+   (apply at all breakpoints, always)
+   ============================================================ */
+
+/* No horizontal scroll anywhere */
+html, body, #root {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* All images stay in bounds */
+img, svg, video, canvas {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Text never overflows */
+.module-title,
+.game-title,
+.session-game,
+.scores-tile-name,
+.leaderboard-game,
+.achievement-name {
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+/* Touch targets — minimum 44×44px (Apple HIG) */
+button,
+.nav-link,
+.back-btn,
+.module-card,
+.memory-card,
+.pattern-cell,
+.nback-cell,
+.math-option,
+.math-assess-option,
+.stroop-btn,
+.ae-key,
+.ae-cmp-btn,
+.reaction-zone,
+.reaction-tap-zone,
+.nback-match-btn,
+.scores-tile,
+.nr-lv-btn,
+.ae-lv-btn {
+  min-height: 44px;
 }

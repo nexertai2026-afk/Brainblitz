@@ -1,0 +1,406 @@
+/* ─── LOGIN v2 — BRAINBLITZ ──────────────────────────────────────────────────
+   Centered card layout. 900×600 grid card. Apple-level dark premium.
+   Prefix: lv2-
+─────────────────────────────────────────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+
+/* ─── RESET ──────────────────────────────────────────────────────────────────── */
+.lv2-page *,
+.lv2-page *::before,
+.lv2-page *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ─── PAGE ───────────────────────────────────────────────────────────────────── */
+.lv2-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  width: 100vw;
+  background: #000;
+  background-image: radial-gradient(
+    ellipse at 30% 50%,
+    rgba(124, 58, 237, 0.06) 0%,
+    transparent 60%
+  );
+  font-family: 'Outfit', sans-serif;
+  opacity: 0;
+  transition: opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  overflow: hidden;
+}
+
+.lv2-page--in {
+  opacity: 1;
+}
+
+/* ─── CARD ───────────────────────────────────────────────────────────────────── */
+.lv2-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 900px;
+  min-height: 600px;
+  background: rgba(10, 10, 12, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.04),
+    0 32px 80px rgba(0, 0, 0, 0.8),
+    0 0 120px rgba(124, 58, 237, 0.06);
+  overflow: hidden;
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+  animation: lv2-card-rise 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: 0.05s;
+}
+
+@keyframes lv2-card-rise {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ─── IMAGE SIDE ─────────────────────────────────────────────────────────────── */
+.lv2-img-side {
+  position: relative;
+  overflow: hidden;
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.lv2-bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* ─── FORM SIDE ──────────────────────────────────────────────────────────────── */
+.lv2-form-side {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 40px 40px;
+  min-height: 580px;
+  background: transparent;
+}
+
+/* ─── HEADING ────────────────────────────────────────────────────────────────── */
+.lv2-heading {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.5px;
+  line-height: 1.2;
+  margin-bottom: 4px;
+}
+
+/* ─── SUBTEXT ────────────────────────────────────────────────────────────────── */
+.lv2-sub {
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.3);
+  margin-bottom: 28px;
+}
+
+/* ─── OAUTH ──────────────────────────────────────────────────────────────────── */
+.lv2-oauth {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.lv2-oauth-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 11px 16px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  color: rgba(255, 255, 255, 0.75);
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: left;
+}
+
+.lv2-oauth-btn:hover {
+  border-color: rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.lv2-oauth-btn:active {
+  transform: scale(0.99);
+}
+
+/* ─── DIVIDER ────────────────────────────────────────────────────────────────── */
+.lv2-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 16px 0;
+}
+
+.lv2-div-line {
+  flex: 1;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.lv2-div-text {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.2);
+}
+
+/* ─── FORM ───────────────────────────────────────────────────────────────────── */
+.lv2-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* ─── INPUT ──────────────────────────────────────────────────────────────────── */
+.lv2-input {
+  width: 100%;
+  padding: 11px 14px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 10px;
+  color: #ffffff;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 400;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.lv2-input::placeholder {
+  color: rgba(255, 255, 255, 0.2);
+}
+
+.lv2-input:focus {
+  border-color: rgba(139, 92, 246, 0.5);
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.08);
+}
+
+.lv2-input--err {
+  border-color: rgba(244, 63, 94, 0.4) !important;
+}
+
+.lv2-input--ok {
+  border-color: rgba(34, 197, 94, 0.35) !important;
+}
+
+/* ─── FORGOT ─────────────────────────────────────────────────────────────────── */
+.lv2-forgot-link {
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.28);
+  cursor: pointer;
+  text-align: right;
+  align-self: flex-end;
+  margin-top: -4px;
+  transition: color 0.2s;
+}
+
+.lv2-forgot-link:hover {
+  color: rgba(139, 92, 246, 0.8);
+}
+
+.lv2-forgot-box {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 14px;
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 10px;
+}
+
+.lv2-reset-btn {
+  padding: 9px 14px;
+  background: rgba(139, 92, 246, 0.12);
+  border: 1px solid rgba(139, 92, 246, 0.25);
+  border-radius: 8px;
+  color: #a78bfa;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.83rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.lv2-reset-btn:hover {
+  background: rgba(139, 92, 246, 0.2);
+  border-color: rgba(139, 92, 246, 0.45);
+}
+
+.lv2-forgot-msg {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.4);
+  text-align: center;
+}
+
+/* ─── ERROR ──────────────────────────────────────────────────────────────────── */
+.lv2-error {
+  padding: 10px 12px;
+  background: rgba(244, 63, 94, 0.06);
+  border: 1px solid rgba(244, 63, 94, 0.12);
+  border-radius: 8px;
+  color: rgba(251, 113, 133, 0.9);
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+
+/* ─── SUBMIT ─────────────────────────────────────────────────────────────────── */
+.lv2-submit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  background: #7c3aed;
+  border: none;
+  border-radius: 10px;
+  color: #fff;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.lv2-submit:hover:not(:disabled) {
+  background: #6d28d9;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px rgba(124, 58, 237, 0.3);
+}
+
+.lv2-submit:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+.lv2-submit:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* ─── SPINNER ────────────────────────────────────────────────────────────────── */
+.lv2-spinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: lv2-spin 0.6s linear infinite;
+  flex-shrink: 0;
+}
+
+@keyframes lv2-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ─── TOGGLE (sign up link) ──────────────────────────────────────────────────── */
+.lv2-toggle {
+  text-align: center;
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.25);
+  margin-top: 20px;
+}
+
+.lv2-toggle-link {
+  font-size: inherit;
+  font-weight: 600;
+  color: rgba(139, 92, 246, 0.8);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.lv2-toggle-link:hover {
+  color: #8b5cf6;
+}
+
+/* ─── HOME LINK ──────────────────────────────────────────────────────────────── */
+.lv2-home-row {
+  display: flex;
+  justify-content: center;
+  margin-top: 12px;
+}
+
+.lv2-home-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.2);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.lv2-home-link:hover {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+/* ─── TABLET ─────────────────────────────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .lv2-card {
+    width: 780px;
+  }
+}
+
+/* ─── MOBILE ─────────────────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .lv2-page {
+    align-items: flex-start;
+    padding: 20px 16px;
+    min-height: 100dvh;
+  }
+
+  .lv2-card {
+    grid-template-columns: 1fr;
+    width: 100%;
+    min-height: unset;
+    border-radius: 20px;
+    margin: 0;
+  }
+
+  .lv2-img-side {
+    display: none;
+  }
+
+  .lv2-form-side {
+    padding: 40px 28px;
+    min-height: unset;
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 400px) {
+  .lv2-form-side {
+    padding: 36px 22px;
+  }
+
+  .lv2-heading {
+    font-size: 1.3rem;
+  }
+}

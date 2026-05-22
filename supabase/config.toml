@@ -1,0 +1,44 @@
+
+[functions.send-welcome]
+enabled = true
+verify_jwt = false
+import_map = "./functions/send-welcome/deno.json"
+# Uncomment to specify a custom file path to the entrypoint.
+# Supported file extensions are: .ts, .js, .mjs, .jsx, .tsx
+entrypoint = "./functions/send-welcome/index.ts"
+# Specifies static files to be bundled with the function. Supports glob patterns.
+# For example, if you want to serve static HTML pages in your function:
+# static_files = [ "./functions/send-welcome/*.html" ]
+
+[functions.send-forgot-password]
+enabled = true
+verify_jwt = false
+import_map = "./functions/send-forgot-password/deno.json"
+# Uncomment to specify a custom file path to the entrypoint.
+# Supported file extensions are: .ts, .js, .mjs, .jsx, .tsx
+entrypoint = "./functions/send-forgot-password/index.ts"
+# Specifies static files to be bundled with the function. Supports glob patterns.
+# For example, if you want to serve static HTML pages in your function:
+# static_files = [ "./functions/send-forgot-password/*.html" ]
+
+[functions.send-achievement]
+enabled = true
+verify_jwt = false
+import_map = "./functions/send-achievement/deno.json"
+# Uncomment to specify a custom file path to the entrypoint.
+# Supported file extensions are: .ts, .js, .mjs, .jsx, .tsx
+entrypoint = "./functions/send-achievement/index.ts"
+# Specifies static files to be bundled with the function. Supports glob patterns.
+# For example, if you want to serve static HTML pages in your function:
+# static_files = [ "./functions/send-achievement/*.html" ]
+
+[functions.send-weekly-report]
+enabled = true
+verify_jwt = false
+import_map = "./functions/send-weekly-report/deno.json"
+# Uncomment to specify a custom file path to the entrypoint.
+# Supported file extensions are: .ts, .js, .mjs, .jsx, .tsx
+entrypoint = "./functions/send-weekly-report/index.ts"
+# Specifies static files to be bundled with the function. Supports glob patterns.
+# For example, if you want to serve static HTML pages in your function:
+# static_files = [ "./functions/send-weekly-report/*.html" ]
